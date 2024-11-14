@@ -3,7 +3,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-type: application/json");
 header("Access-Control-Allow-Method: PUT");
 
-include_once("../modals/project.class.php");
+include_once("../autoload/autoload.php");
+
 
 $response = array(
   "status" => 0,
@@ -30,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == "PUT") {
     $live = htmlspecialchars(stripslashes($data->live_link));
     $github = htmlspecialchars(stripslashes($data->github_link));
 
-    $project = new Project();
-    $project->tableName = "tbl_project";
     $result = $project->updateProject($id, $stack, $title, $live, $github);
 
     if ($result == 0) {

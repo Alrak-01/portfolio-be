@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Method: GET");
 
-include_once("../modals/project.class.php");
+include_once("../autoload/autoload.php");
 
 $response = array(
   "status" => 0,
@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   }
   $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-  $project = new Project();
-  $project->tableName = "tbl_project";
   $result  = $project->selectSingleProject($id);
   if ($result == 0) {
     http_response_code(500);

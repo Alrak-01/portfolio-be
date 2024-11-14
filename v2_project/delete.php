@@ -3,7 +3,7 @@ header("Access-Control-Allow-origin: *");
 header("Content-type: application/json");
 header("Access-Control-Allow-Method: POST");
 
-include_once("../modals/project.class.php");
+include_once("../autoload/autoload.php");
 
 $response = array(
   "status" => 0,
@@ -18,8 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
   else {
     $id = htmlspecialchars(stripslashes($data->id));
-    $project = new Project();
-    $project->tableName = "tbl_project";
     $result = $project->deleteProject($id);
     if ($result == 0) {
       http_response_code(500);

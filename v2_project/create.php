@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-type: application/json");
 header("Access-Control-Allow-Method: POST");
 
-include_once("../modals/project.class.php");
+include_once("../autoload/autoload.php");
 
 $response = array(
   "status" => 0,
@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $github = htmlspecialchars(stripslashes($data->github_link));
     $date = date("d-m-Y");
 
-    $project = new Project();
-    $project->tableName = "tbl_project";
     $result = $project->createProject($stack, $title, $live, $github, $date);
     if ($result == 0) {
       http_response_code(500);
