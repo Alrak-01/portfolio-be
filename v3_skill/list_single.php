@@ -28,10 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         "status" => $rows['status']
       ));
 
+
     http_response_code(200);
     echo json_encode(array(
       "status" => 1,
-      "date" => $allAdmin['records']
+      "data" => $allAdmin['records']
     ));
   }
   }

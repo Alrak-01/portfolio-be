@@ -4,16 +4,19 @@ header("Access-Control-Allow-Method: GET");
 
 include_once("../autoload/autoload.php");
 
-$response = array(
-  "status" => 0,
-  "message" => "File reading faiiled"
-);
+// $response = array(
+//   "status" => 0,
+//   "message" => "File reading faiiled"
+// );
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
   $result  = $project->selectproject();
   if ($result == 0) {
     http_response_code(500);
-    $response['message'] = "Database error occurred";
+    echo json_encode(array(
+      "status" => 0,
+      "message" => "Database error occurred"
+    ));
   }
   else{
     $allAdmin['records'] = array();
@@ -31,15 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     http_response_code(200);
     echo json_encode(array(
       "status" => 1,
-      "date" => $allAdmin['records']
+      "data" => $allAdmin['records']
     ));
   }
-
-
-
   }
 else {
   http_response_code(503);
-  $response['message'] = "Method not allowed";
+  echo json_encode(array(
+    "status" => 0,
+    "message" => "Method not allowed"
+  ));
 }
-echo json_encode($response);
+// echo json_encode($response);

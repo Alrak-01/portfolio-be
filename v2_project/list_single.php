@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         "title" => $rows['title'],
         "live_link" => $rows['live_link'],
         "github_link" => $rows['github_link'],
-        "date" => $rows['date']
+        "data" => $rows['date']
       ));
 
       http_response_code(200);

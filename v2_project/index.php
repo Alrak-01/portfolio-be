@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
+
+
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 
 switch($action) {
@@ -28,4 +32,4 @@ switch($action) {
         break;
 }
 
-echo json_encode($response);
+// echo json_encode($response);
