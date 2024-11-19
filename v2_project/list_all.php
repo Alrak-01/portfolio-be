@@ -1,13 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Method: GET");
+header("Access-Control-Allow-MethodS: GET");
 
-include_once("../autoload/autoload.php");
-
-// $response = array(
-//   "status" => 0,
-//   "message" => "File reading faiiled"
-// );
+require_once("../modals/project.class.php");
+$project = new Project();
+$project->tableName = "tbl_project";
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
   $result  = $project->selectproject();

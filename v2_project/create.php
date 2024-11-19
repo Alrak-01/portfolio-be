@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $title = htmlspecialchars(stripslashes($data->title));
     $live = htmlspecialchars(stripslashes($data->live_link));
     $github = htmlspecialchars(stripslashes($data->github_link));
-    $date = date("d-m-Y");
+    $date = date("Y");
 
     $result = $project->createProject($stack, $title, $live, $github, $date);
     if ($result == 0) {

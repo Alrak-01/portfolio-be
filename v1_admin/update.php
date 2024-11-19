@@ -3,13 +3,10 @@ header("Access-Control-Allow-Origin: *");
 header("Content-type:application/json; charset=UFT -8");
 header("Access-Comtrol-Allow-Methods: PUT");
 
-include_once("../modals/admin.class.php");
-
-$admin = new Admin();
-$admin->tableName = "tbl_admin";
+include_once("../autoload/autoload.php");
 
 $response = array(
-  "status" => 1,
+  "status" => 0,
   "message" => "Form submission failed"
 );
 
