@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 
-switch($action) {
+switch($action) {  
     case "select":
     include ("select.php");
         break;

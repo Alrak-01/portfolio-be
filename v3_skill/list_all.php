@@ -2,19 +2,25 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Method: GET");
 
-include_once("../autoload/autoload.php");
+// include_once("../autoload/autoload.php");
+require_once("../modals/skill.class.php");
+$skill = new Skill();
+$skill->tableName = "tbl_skill";
 
-$response = array(
-  "status" => 0,
-  "message" => "File reading faiiled"
-);
+// $response = array(
+//   "status" => 0,
+//   "message" => "File reading faiiled"
+// );
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
   $result  = $skill->selectSkill();
   if ($result == 0) {
     http_response_code(500);
-    $response['message'] = "Database error occurred";
+    echo json_encode(array(
+      "status" => 0,
+      "message" => "Database error occurred"
+    ));
   }
   else{
     $allAdmin['records'] = array();
@@ -23,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         "id" => $rows['id'],
         "name" => $rows['name'],
         "experience" => $rows['experience'],
-        "status" => $rows['status']
+        "status" => $rows['status'],
+        "type" => $rows['type']
       ));
     }
 
@@ -36,6 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   }
 else {
   http_response_code(503);
-  $response['message'] = "Method not allowed";
+  echo json_encode(array(
+    "status" => 0,
+    "message" => "Method not allowed"
+  ));
 }
-echo json_encode($response);
+// echo json_encode($response);

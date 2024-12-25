@@ -14,7 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === "PUT") {
   $data = json_decode(file_get_contents("php://input"));
 
 
-  if (empty($data->lastname) || empty($data->middlename) || empty($data->firstname) || empty($data->mobile)) {
+  // if (empty($data->lastname) || empty($data->middlename) || empty($data->firstname) || empty($data->mobile)) {
+    if (empty($data->lastname)) {
+
       http_response_code(503);
       $response['message'] = "Input field cannot be empty";
   }
@@ -23,12 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === "PUT") {
     $firstname = $data->firstname;
     $middlename = $data->middlename;
     $mobile = $data->mobile;
+    $aboutme = $data->about_me;
 
     $data = [
       "lastname" => $lastname,
-      "firstname" => $firstname,
-      "middlename" => $middlename,
-      "mobile" => $mobile
+      // "firstname" => $firstname,
+      // "middlename" => $middlename,
+      // "mobile" => $mobile,
+      "about_me" => $aboutme
     ];
     $id = 1;
     $result = $admin->updateAdmin($id, $data);

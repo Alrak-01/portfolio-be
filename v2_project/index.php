@@ -7,7 +7,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : null;
 
 switch($action) {
     case "create":
-      include ("create.php");
+      include ("create.php"); 
         break;
 
     case "listAll":

@@ -1,5 +1,5 @@
 <?php
-// include("../config/database.php");
+include("../config/database.php");
 class Skill extends Database{
   public $tableName;
   public $db_con;
